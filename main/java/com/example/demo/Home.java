@@ -1,11 +1,19 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+//@Scope("prototype")
 public class Home {
 	private int doorNum;
 	private String owner;
+	@Autowired
+	InternetConnection fibre;
+	
+	Home(){
+		System.out.println("Creating Home..");
+	}
 	
 	public int getDoorNum() {
 		return doorNum;
@@ -24,7 +32,8 @@ public class Home {
 	}
 	
 	public void connect() {
-		System.out.print("connecting...");
+		fibre.switchOn();
+		System.out.println("connecting...");
 	}
 
 }
